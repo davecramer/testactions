@@ -27,11 +27,11 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Show the path
-        run: write-host $env:GITHUB_PATH
+        run: write-host $env:path
 
       # Runs a set of commands using the runners shell
       - name: set the path
-        run: echo "foo" >> $env:path
+        run: echo "foo" >> $env:GITHUB_PATH
       - name: path after set
         run: write-host $env:path
       
