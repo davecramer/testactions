@@ -27,7 +27,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Show the path
-        run: write-host $env:path
+        run: write-host $env:GITHUB_PATH
 
       # Runs a set of commands using the runners shell
       - name: set the path
