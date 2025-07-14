@@ -33,11 +33,12 @@ jobs:
       - name: install packages
         run: | 
           vcpkg install --triplet=arm64-windows `
-          vcpkg-tool-meson:arm64-windows `
-          vcpkg-tool-ninja:arm64-windows `
           --debug
       - name: path after set
         run: write-host $env:path
-      - name: run meson
-        run: meson --help
+      - uses: actions/setup-python@v1
+      - uses: BSFishy/meson-build@v1.0.3
+        with:
+          action: test
+          directory: build
       
