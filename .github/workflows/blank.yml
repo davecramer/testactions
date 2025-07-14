@@ -33,13 +33,11 @@ jobs:
       - name: install packages
         run: | 
           vcpkg install --triplet=arm64-windows `
-          libxml2 `
-          lz4 `
-          pkgconf `
-          zlib `
           vcpkg-tool-meson:arm64-windows `
           vcpkg-tool-ninja:arm64-windows `
           --debug
       - name: path after set
         run: write-host $env:path
+      - name: run meson
+        run: meson --help
       
