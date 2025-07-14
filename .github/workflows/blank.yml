@@ -28,14 +28,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Show the path
         run: write-host $env:path
-
-      # Runs a set of commands using the runners shell
-      - name: install packages
-        run: | 
-          vcpkg install --triplet=arm64-windows `
-          --debug
-      - name: path after set
-        run: write-host $env:path
+        
       - uses: actions/setup-python@v1
       - uses: BSFishy/meson-build@v1.0.3
         with:
