@@ -26,12 +26,24 @@ jobs:
       - uses: actions/checkout@v4
 
       # Runs a single command using the runners shell
-      - name: Show the path
-        run: write-host $env:path
-        
-      - uses: actions/setup-python@v1
-      - uses: BSFishy/meson-build@v1.0.3
+      - name: Setup msvc
+        uses:  ilammy/msvc-dev-cmd@v1
         with:
-          action: test
-          directory: build
+          arch: arm64
+          toolset: 14.43
+          vsversion: 2022
       
+      - name: Install Packages
+        run: | 
+          vcpkg.exe install --triplet=arm64-windows `
+          libxml2 `
+          lz4 `
+          pkgconf `
+          zlib `
+          --debug
+
+      - name: Install vcpkg into msvc
+        run: vcpkg integrate install
+        
+      - name: Show Path
+        run: write-host $env:path
