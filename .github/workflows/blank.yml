@@ -43,7 +43,7 @@ jobs:
           --debug
 
       - name: Install vcpkg into msvc
-        run: vcpkg integrate install
+        run: echo "c:/vcpkg/installed/arm64-windows/bin" >> $ENV:GITHUB_PATH
         
       - name: Show Path
         run: write-host $env:path
