@@ -36,14 +36,13 @@ jobs:
       - name: Install Packages
         run: | 
           vcpkg.exe install --triplet=arm64-windows `
-          libxml2 `
-          lz4 `
           pkgconf `
-          zlib `
           --debug
 
       - name: Install vcpkg into msvc
-        run: echo "c:/vcpkg/installed/arm64-windows/bin" >> $ENV:GITHUB_PATH
+        run: echo "c:/vcpkg/installed/arm64-windows/tools/pkgconf" >> $ENV:GITHUB_PATH
         
       - name: Show Path
-        run: write-host $env:path
+        run: |
+          write-host $env:path
+          pkgconf.exe --about
